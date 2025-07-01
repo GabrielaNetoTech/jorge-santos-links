@@ -494,3 +494,28 @@ body {
     gap: 0.4rem;
   }
 }
+
+.footer-copyright-main {
+  font-size: 0.75rem;
+  color: var(--cinza-claro);
+  margin-top: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.footer-copyright {
+  font-size: 0.7rem;
+  color: var(--branco);
+  margin-top: 0.5rem;
+}
+
+.footer-anchor {
+  font-weight: bold;
+  color: var(--azul-royal);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-anchor:hover,
+.footer-anchor:focus {
+  color: var(--azul-acinzentado);
+  text-decoration: underline;
+}
