@@ -1,0 +1,496 @@
+/* =======================================================================================
+ *  Projeto: Jorge Santos - Despachante Veicular
+ *  Autor:   [Seu Nome]
+ *  Descrição: Folha de estilos seguindo boas práticas de CSS, com abordagem Mobile First.
+ * ======================================================================================= */
+
+/* ===========================
+   Variáveis de Cores e Sombras
+   =========================== */
+:root {
+  --azul-profundo: #0A1532;
+  --azul-petroleo: #12305B;
+  --azul-acinzentado: #4874A6;
+  --azul-royal: #276EF1;
+  --cinza-claro: #E8EDF2;
+  --branco: #FFFFFF;
+  --preto-azulado: #070D1B;
+  --whatsapp-verde: #25D366;
+  --sombra-padrao: 0 8px 32px rgba(18, 48, 91, 0.16);
+}
+
+/* ===========================
+   Reset e Base
+   =========================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--azul-profundo);
+  color: var(--branco);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* ===========================
+   Container Principal
+   =========================== */
+.container {
+  position: relative;
+  min-height: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--azul-profundo) 80%,
+    var(--azul-petroleo) 60%,
+    var(--azul-acinzentado) 100%
+  );
+}
+
+.container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/equipe-cezQAe5K2HXZVLtd6KxvAgvwjWXqPF.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.09;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(10,21,50,0.95) 0%, rgba(18, 48, 91, 0.53) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ===========================
+   Conteúdo Centralizado
+   =========================== */
+.content {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 3rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===========================
+   Seção de Perfil
+   =========================== */
+.profile-section {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding-top: 2.5rem;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 0.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 2px;
+  background: linear-gradient(135deg, #276EF1 0%, #4874A6 60%, #E8EDF2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--sombra-padrao);
+  position: relative;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #4874A6 0%, #276EF1 60%, #E8EDF2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.profile-description {
+  font-size: 1rem;
+  color: var(--cinza-claro);
+  margin-bottom: 1rem;
+}
+
+.scroll-indicator {
+  margin-top: 1rem;
+}
+
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: var(--azul-royal);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* ===========================
+   Seção de Links (ajustada)
+   =========================== */
+.links-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.link-item {
+  background: rgba(18, 48, 91, 0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--azul-acinzentado);
+  border-radius: 12px;
+  padding: 0.8rem 0.3rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--sombra-padrao);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+  width: 100%;
+  max-width: 340px; /* Alinhado com services-list */
+  font-size: 0.99rem;
+}
+
+.link-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--azul-royal) 40%, transparent);
+  transition: left 0.5s ease;
+}
+
+.link-item:hover::before {
+  left: 100%;
+}
+
+.link-item:hover {
+  transform: translateY(-2px);
+  background: rgba(39, 110, 241, 0.18);
+  border-color: var(--azul-royal);
+}
+
+.link-item:focus-visible {
+  outline: 2px solid var(--azul-royal);
+  outline-offset: 4px;
+}
+
+.whatsapp-link:hover {
+  border-color: var(--whatsapp-verde);
+  box-shadow: 0 8px 32px rgba(37, 211, 102, 0.13);
+}
+
+.website-link:hover {
+  border-color: var(--azul-royal);
+}
+
+.link-content {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  position: relative;
+  z-index: 1;
+}
+
+.link-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.link-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.link-icon-left,
+.link-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(18, 48, 91, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--azul-royal);
+  font-size: 1.15rem;
+}
+
+.link-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.link-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--branco);
+}
+
+.link-subtitle {
+  font-size: 0.87rem;
+  color: #c5c6c78e;
+}
+
+.whatsapp-link .link-icon {
+  color: var(--whatsapp-verde);
+}
+
+/* ===========================
+   Seção de Serviços
+   =========================== */
+.services-section {
+  margin: 2rem 0 2.5rem;
+  text-align: center;
+  border-top: 1px solid var(--azul-acinzentado);
+}
+
+.services-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--azul-royal);
+  margin: 1rem 0;
+}
+
+.service-subtitle {
+  font-size: 0.8rem;
+  color: var(--cinza-claro);
+  margin-bottom: 2rem;
+}
+
+.services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  align-items: flex-start;
+}
+
+.services-list li {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: var(--branco);
+  background: rgba(18, 48, 91, 0.329);
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  gap: 0.7rem;
+  box-shadow: 0 2px 8px rgba(18, 48, 91, 0.05);
+  width: 100%;
+}
+
+.services-list li i {
+  font-size: 1.3em;
+  color: var(--azul-royal);
+  flex-shrink: 0;
+  margin-right: 0.5em;
+}
+
+@media (min-width: 481px) {
+  .services-section {
+    margin: 3rem 0;
+  }
+  .services-list {
+    max-width: 420px;
+  }
+  .services-list li {
+    font-size: 1.12rem;
+    padding: 0.7rem 1.3rem;
+  }
+  .link-item {
+    max-width: 420px; /* igual aos serviços */
+    border-radius: 16px;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
+
+/* ===========================
+   Seção de Equipe e Rodapé
+   =========================== */
+/* Mantenha igual como já estava: não precisa alterar nada */
+
+.team-section {
+  text-align: center;
+  margin-bottom: 3rem;
+  border-top: 1px solid var(--azul-acinzentado);
+}
+
+.team-title {
+  font-size: 1.5rem;
+  margin-top: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--azul-royal);
+}
+
+.team-subtitle {
+  font-size: 0.8rem;
+  color: var(--cinza-claro);
+  margin-bottom: 2rem;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  background: rgba(18, 48, 91, 0.10);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--azul-acinzentado);
+  border-radius: 12px;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
+  min-width: 70px;
+}
+
+.team-member:hover {
+  transform: translateY(-2px);
+  background: rgba(39, 110, 241, 0.11);
+}
+
+.team-member img {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid var(--azul-acinzentado);
+}
+
+.team-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--azul-acinzentado);
+}
+
+.team-role {
+  font-size: 0.75rem;
+  color: var(--cinza-claro);
+}
+
+.footer {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--azul-acinzentado);
+}
+
+.footer-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.footer-profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.footer-name {
+  font-weight: 600;
+  color: var(--branco);
+}
+
+.footer-description {
+  font-size: 0.875rem;
+  color: var(--cinza-claro);
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.social-link {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(18, 48, 91, 0.575);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul-royal);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: var(--azul-royal);
+  color: var(--branco);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 375px) {
+  .link-item {
+    max-width: 99vw;
+    padding: 0.5rem 0.2rem;
+  }
+  .link-avatar {
+    width: 38px;
+    height: 38px;
+  }
+  .link-content {
+    gap: 0.4rem;
+  }
+}
