@@ -1,6 +1,6 @@
 // WhatsApp function
 function openWhatsApp(number, name) {
-    const message = encodeURIComponent(`Olá! Gostaria de falar com ${name} sobre os serviços do Jorge Santos Despachante.`);
+    const message = encodeURIComponent(`Olá, ${name}! Gostaria de falar contigo sobre os serviços do Jorge Santos Despachante.`);
     const whatsappUrl = `https://wa.me/${number}?text=${message}`;
     window.open(whatsappUrl, '_blank');
 }
